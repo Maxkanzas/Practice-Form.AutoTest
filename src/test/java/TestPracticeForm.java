@@ -2,15 +2,11 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
 
 public class TestPracticeForm {
         @BeforeAll
@@ -31,9 +27,8 @@ public class TestPracticeForm {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("simple@test.ru");
-        $("#userNumber").setValue("78381238899");
+        $("#userNumber").setValue("8381238899");
         $("#currentAddress").setValue("Lenina Street 2");
-        $("label[for='gender-radio-1']").click();
         $(byId("dateOfBirthInput")).click();
         $(".react-datepicker__month-container").shouldBe(Condition.visible);
         $(".react-datepicker__month-select").selectOption("April");
@@ -42,11 +37,22 @@ public class TestPracticeForm {
         $("label[for='gender-radio-1']").click();
         $("#subjectsInput").shouldBe(visible).setValue("English").pressEnter();
         $("label[for='hobbies-checkbox-1']").click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/Блейд.jpg/")); // Здесь также обращаемся к id="uploadPicture".
+        $("#uploadPicture").uploadFromClasspath("Блейд.jpg "); // Здесь также обращаемся к id="uploadPicture".
         $("#state").scrollIntoView(true).shouldBe(visible).click();
         $("#state input").setValue("Haryana").pressEnter();
         $("#city").scrollIntoView(true).shouldBe(visible).click();
         $("#city input").setValue("Karnal").pressEnter();
         $("#submit").click();
+
+        $(".table-responsive").shouldHave(text("Alex Ivanov"));
+        $(".table-responsive").shouldHave(text("simple@test.ru"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("8381238899"));
+        $(".table-responsive").shouldHave(text("14 April,1991"));
+        $(".table-responsive").shouldHave(text("English"));
+        $(".table-responsive").shouldHave(text("Sports"));
+        $(".table-responsive").shouldHave(text("Блейд.jpg"));
+        $(".table-responsive").shouldHave(text("Lenina Street 2"));
+        $(".table-responsive").shouldHave(text("Haryana Karnal"));
         }
 }
