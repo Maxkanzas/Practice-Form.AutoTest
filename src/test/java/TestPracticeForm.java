@@ -13,7 +13,6 @@ public class TestPracticeForm {
         public static void beforeAll()
         {
                 Configuration.pageLoadStrategy = "eager"; // команда для того, чтобы селенид не ждал загрузки всех картинок и тяжелых элементов. Только html.
-                Configuration.holdBrowserOpen = true;
                 Configuration.browserSize = "1920x1080";
                 Configuration.baseUrl = "https://demoqa.com";
         }
