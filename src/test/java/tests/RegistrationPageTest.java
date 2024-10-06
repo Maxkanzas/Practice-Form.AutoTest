@@ -1,6 +1,6 @@
+package tests;
+
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -10,15 +10,8 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestPracticeForm {
-        @BeforeAll
-        public static void beforeAll()
-        {
-                Configuration.pageLoadStrategy = "eager"; // команда для того, чтобы селенид не ждал загрузки всех картинок и тяжелых элементов. Только html.
-                Configuration.browserSize = "1920x1080";
-                Configuration.baseUrl = "https://demoqa.com";
-                Configuration.holdBrowserOpen = true;
-        }
+public class RegistrationPageTest {
+
         @Test
         void fillFormTest() {
 
