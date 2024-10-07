@@ -5,7 +5,7 @@ import pages.RegistrationPageObject;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class FinalRegistrationPageTest {
+public class FinalRegistrationPageTest extends TestBase {
 
         RegistrationPageObject registrationPage = new RegistrationPageObject();
 

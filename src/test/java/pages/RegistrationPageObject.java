@@ -2,12 +2,13 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import tests.TestBase;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationPageObject extends TestBase {
+public class RegistrationPageObject {
 
     public SelenideElement
 
