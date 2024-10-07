@@ -3,8 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -117,15 +116,16 @@ public class RegistrationPageObject extends TestBase {
         return this;
     }
 
-    public void clickSubmit() {
+    public RegistrationPageObject clickSubmit() {
         submitInput.click();
+        return this;
     }
     public RegistrationPageObject checkResults (String key, String value) {
         responseTable.$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
     public RegistrationPageObject negativeResults() {
-        userFormInput.shouldHave(attribute("class", "was-validated"));
+        userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 }

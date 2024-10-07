@@ -56,4 +56,14 @@ public class FinalRegistrationPageTest {
                         .checkResults("Gender", "Male")
                         .checkResults("Mobile", "8972123456");
         }
+        @Test
+        void negativeFormTests() {
+                registrationPage
+                        .openPage()
+                        .setFirstName("Alex")
+                        .setLastName("Ivanov")
+                        .setGenter("Male")
+                        .clickSubmit()
+                        .negativeResults();
+        }
 }
