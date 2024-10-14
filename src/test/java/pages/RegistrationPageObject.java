@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import tests.TestBase;
@@ -22,13 +23,13 @@ public class RegistrationPageObject {
 
     currentNumberInput = $("#currentAddress"),
 
-    genterWrapper = $("genterWrapper"),
+    genterWrapper = $("#genterWrapper"),
 
-    calendarInput = $("dateOfBirthInput"),
+    calendarInput = $("#dateOfBirthInput"),
 
     subjectInput = $("#subjectsInput"),
 
-    hobbieInput = $("hobbiesWrapper"),
+    hobbieInput = $("#hobbiesWrapper"),
 
     uploadpicture = $("#uploadPicture"),
 
@@ -36,13 +37,11 @@ public class RegistrationPageObject {
 
     cityInput = $("#city"),
 
-    stateCityWrapper = $("#stateCity-wrapper"),
+    CityWrapper = $("#stateCity-wrapper"),
 
     submitInput = $("#submit"),
 
-    responseTable = $(".table-responsive"),
-
-    userFormInput = $("form#userForm");
+    responseTable = $(".table-responsive");
 
     CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -106,14 +105,14 @@ public class RegistrationPageObject {
     }
 
     public RegistrationPageObject setState(String value) {
-        stateInput.click();
-        stateCityWrapper.$(byText(value)).click();
+        stateInput.hover().click();
+        CityWrapper.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPageObject setCity(String value) {
         cityInput.click();
-        stateCityWrapper.$(byText(value)).click();
+        CityWrapper.$(byText(value)).click();
         return this;
     }
 
