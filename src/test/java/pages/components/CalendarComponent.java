@@ -10,6 +10,6 @@ public class CalendarComponent {
         $(".react-datepicker__month-container").shouldBe(Condition.visible);
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("1991");
-        $(byText("14")).click();
+        $(byText("30")).click();
     }
 }
