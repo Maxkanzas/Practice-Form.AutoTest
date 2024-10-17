@@ -1,5 +1,7 @@
 package tests;
 
+import Utils.RandomData;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPageObject;
 
@@ -8,6 +10,25 @@ import static com.codeborne.selenide.Selenide.$;
 public class FinalRegistrationPageTest extends TestBase {
 
         RegistrationPageObject registrationPage = new RegistrationPageObject();
+        RandomData randomData = new RandomData();
+
+        String
+                firstName = randomData.firstName,
+                lastName = randomData.lastName,
+                userEmail = randomData.userEmail,
+                phoneNumber = randomData.phoneNumber,
+                address = randomData.address,
+                gender = randomData.gender,
+                dayOfBirth = randomData.dayOfBirth,
+                monthOfBirth = randomData.monthOfBirth,
+                yearOfBirth = randomData.yearOfBirth,
+                subjects = randomData.subjects,
+                hobbies = randomData.hobbies,
+                pictureName = randomData.pictureName,
+                state = randomData.state,
+                city = randomData.city;
+
+
 
 
         @Test
@@ -15,31 +36,31 @@ public class FinalRegistrationPageTest extends TestBase {
 
                 registrationPage
                         .openPage()
-                        .setFirstName("Alex")
-                        .setLastName("Ivanov")
-                        .setUserMail("inch@mail.ru")
-                        .setNumberInput("8381238899")
-                        .setCurrentNumberInput("Lenina Street 2")
-                        .setGenter("Male")
-                        .setDateOfBirth("30", "April", "1991")
-                        .setSubjects("English")
-                        .setHobbie("Sports")
-                        .uploadPicture("Блейд.jpg")
-                        .setState("Haryana")
-                        .setCity("Karnal")
+                        .setFirstName(firstName)
+                        .setLastName(lastName)
+                        .setUserMail(userEmail)
+                        .setNumberInput(phoneNumber)
+                        .setCurrentNumberInput(address)
+                        .setGenter(gender)
+                        .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                        .setSubjects(subjects)
+                        .setHobbie(hobbies)
+                        .uploadPicture(pictureName)
+                        .setState(state)
+                        .setCity(city)
                         .clickSubmit();
 
                 registrationPage
-                        .checkResults("Student Name", "Alex Ivanov")
-                        .checkResults("Student Email", "inch@mail.ru")
-                        .checkResults("Gender", "Male")
-                        .checkResults("Mobile", "8381238899")
-                        .checkResults("Date of Birth", "30 April,1991")
-                        .checkResults("Subjects", "English")
-                        .checkResults("Hobbies", "Sports")
-                        .checkResults("Picture", "Блейд.jpg")
-                        .checkResults("Address", "Lenina Street 2")
-                        .checkResults("State and City", "Haryana Karnal");
+                        .checkResults("Student Name", firstName + " " + lastName)
+                        .checkResults("Student Email", userEmail)
+                        .checkResults("Gender", gender)
+                        .checkResults("Mobile", phoneNumber)
+                        .checkResults("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
+                        .checkResults("Subjects", subjects)
+                        .checkResults("Hobbies", hobbies)
+                        .checkResults("Picture", pictureName)
+                        .checkResults("Address", address)
+                        .checkResults("State and City", state + " " + city);
         }
 
         @Test
