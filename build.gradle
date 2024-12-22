@@ -15,8 +15,7 @@ dependencies {
             'org.slf4j:slf4j-simple:2.0.7'
     )
 }
-def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
+def allureVersion = "2.21.0"
 
 allure {
     report {
