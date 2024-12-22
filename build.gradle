@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 repositories {
@@ -13,6 +14,22 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'org.slf4j:slf4j-simple:2.0.7'
     )
+}
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
 }
 
 tasks.withType(Test) {
@@ -29,11 +46,5 @@ tasks.withType(Test) {
 task simple_test(type: Test) {
     useJUnitPlatform {
         includeTags("simple")
-    }
-}
-
-task demoqa_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("demoqa")
     }
 }
