@@ -3,7 +3,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import heplers.Attach;
+import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -25,7 +25,7 @@ public class RegistrationPageTestAllureStep {
                 Configuration.browserSize = "1920x1080";
                 Configuration.baseUrl = "https://demoqa.com";
 //                Configuration.holdBrowserOpen = true;
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+                Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
 
         @AfterEach
