@@ -20,10 +20,9 @@ public class RegistrationPageTestAllureStep {
         @BeforeAll
         public static void beforeAll()
         {
-                Configuration.pageLoadStrategy = "eager";
                 Configuration.browserSize = "1920x1080";
                 Configuration.baseUrl = "https://demoqa.com";
-                Configuration.holdBrowserOpen = true;
+                Configuration.holdBrowserOpen = false;
                 Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         }
         @AfterEach
