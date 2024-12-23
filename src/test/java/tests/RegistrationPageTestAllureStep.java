@@ -24,15 +24,18 @@ public class RegistrationPageTestAllureStep {
                 Configuration.browserSize = "1920x1080";
                 Configuration.baseUrl = "https://demoqa.com";
                 Configuration.holdBrowserOpen = true;
-                SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         }
         @AfterEach
         public void addAttachments() {
                 Attach.screenshotAs("Last screenshot");
         }
+        @BeforeEach
+        public void AllureSelenide() {
+                SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        }
 
         @Test
-        @Tag("RegForm")
+        @Tag("regForm")
         public void fillFormTest() {
 
         step ("Открытие формы", ()-> {
