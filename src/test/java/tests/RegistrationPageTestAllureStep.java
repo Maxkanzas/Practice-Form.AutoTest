@@ -2,9 +2,9 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 
@@ -19,11 +19,17 @@ public class RegistrationPageTestAllureStep {
         @BeforeAll
         public static void beforeAll()
         {
-                Configuration.pageLoadStrategy = "eager"; // команда для того, чтобы селенид не ждал загрузки всех картинок и тяжелых элементов. Только html.
+                Configuration.pageLoadStrategy = "eager";
                 Configuration.browserSize = "1920x1080";
                 Configuration.baseUrl = "https://demoqa.com";
                 Configuration.holdBrowserOpen = true;
+                SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         }
+        @AfterEach
+        public void addAttachments() {
+                Attach.screenshotAs("Last screenshot");
+        }
+
         @Test
         @Tag("RegForm")
         public void fillFormTest() {
