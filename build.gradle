@@ -53,8 +53,8 @@ task simple_test(type: Test) {
         includeTags("simple")
     }
 }
-task RegForm_test(type: Test) {
+task regForm_test(type: Test) {
     useJUnitPlatform {
-        includeTags("RegForm")
+        includeTags("regForm")
     }
 }
