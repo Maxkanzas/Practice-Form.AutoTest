@@ -13,8 +13,10 @@ public class FinalRegistrationPageTest extends TestBase {
         RandomData randomData = new RandomData();
 
         String
-                firstName = randomData.firstName,
+                firstName = randomData.getfirstName(),
+                firstName1 = randomData.getfirstName(),
                 lastName = randomData.lastName,
+                lastName1 = randomData.lastName,
                 userEmail = randomData.userEmail,
                 phoneNumber = randomData.phoneNumber,
                 address = randomData.address,
