@@ -17,27 +17,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RegistrationPageTestAllureStep {
-
-        @BeforeAll
-        public static void beforeAll() {
-                Configuration.pageLoadStrategy = "eager";
-                Configuration.browserSize = "1920x1080";
-                Configuration.baseUrl = "https://demoqa.com";
-//                Configuration.holdBrowserOpen = true;
-                Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        }
-
-        @AfterEach
-        public void addAttachments() {
-                Attach.screenshotAs("Last screenshot");
-        }
-
-        @BeforeEach
-        public void AllureSelenide() {
-                SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        }
-
+public class RegistrationPageTestAllureStep extends TestBase {
         @Test
         @Tag("regForm")
         public void fillFormTest() {
@@ -54,16 +34,14 @@ public class RegistrationPageTestAllureStep {
                         $("#userEmail").setValue("simple@test.ru");
                         $("#userNumber").setValue("8381238899");
                         $("#currentAddress").setValue("Lenina Street 2");
-                        $("label[for='gender-radio-1']").click(); // сложный вариант. Используется тогда, когда элементы накладываются друг на друга
-                        $(byId("dateOfBirthInput")).click(); // Кликаем на поле с календарем. Первый вариант.
+                        $("label[for='gender-radio-1']").click();
+                        $(byId("dateOfBirthInput")).click();
                         $(".react-datepicker__month-container").shouldBe(Condition.visible);
                         $(".react-datepicker__month-select").selectOption("April");
                         $(".react-datepicker__year-select").selectOption("1991");
                         $(byText("14")).click();
                         $("#subjectsInput").setValue("English").pressEnter();
-                        $("label[for='hobbies-checkbox-1']").click(); // сложный вариант. Используется тогда, когда элементы накладываются друг на друга
-//                $("#uploadPicture").uploadFromClasspath("Блейд.jpg"); // Самый классный вариант. Здесь также обращаемся к id="uploadPicture".
-//                $("#uploadPicture").uploadFile(new File("Блейд.jpg")); // Вариант посложнее. Здесь также обращаемся к id="uploadPicture".
+                        $("label[for='hobbies-checkbox-1']").click();
                         $("#state").click();
                         $("#stateCity-wrapper").$(byText("Haryana")).click();
                         $("#city").click();
