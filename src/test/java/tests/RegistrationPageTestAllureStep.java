@@ -61,7 +61,6 @@ public class RegistrationPageTestAllureStep extends TestBase {
                         $(".table-responsive").shouldHave(text("14 April,1991"));
                         $(".table-responsive").shouldHave(text("English"));
                         $(".table-responsive").shouldHave(text("Sports"));
-//                $(".table-responsive").shouldHave(text("Блейд.jpg"));
                         $(".table-responsive").shouldHave(text("Lenina Street 2"));
                         $(".table-responsive").shouldHave(text("Haryana Karnal"));
                 });
