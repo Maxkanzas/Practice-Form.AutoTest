@@ -22,13 +22,13 @@ public class RegistrationPageTestAllureStep extends TestBase {
         @Tag("regForm")
         public void fillFormTest() {
 
-                SelenideLogger.step("Открытие формы", () -> {
+                step("Открытие формы", () -> {
                         open("/automation-practice-form");
                         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
                         executeJavaScript("$('#fixedban').remove()");
                         executeJavaScript("$('footer').remove()");
                 });
-                SelenideLogger.step("Заполнение формы", () -> {
+                step("Заполнение формы", () -> {
                         $("#firstName").setValue("Alex");
                         $("#lastName").setValue("Ivanov");
                         $("#userEmail").setValue("simple@test.ru");
@@ -53,7 +53,7 @@ public class RegistrationPageTestAllureStep extends TestBase {
                         $("#submit").click();
 
                 });
-                SelenideLogger.step("Проверка заполнения формы", () -> {
+                step("Проверка заполнения формы", () -> {
                         $(".table-responsive").shouldHave(text("Alex Ivanov"));
                         $(".table-responsive").shouldHave(text("simple@test.ru"));
                         $(".table-responsive").shouldHave(text("Male"));
