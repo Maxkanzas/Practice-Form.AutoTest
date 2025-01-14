@@ -18,7 +18,6 @@ public class TestBase {
     {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.remote = System.getProperty("selenoid_URL");
         Configuration.browser = System.getProperty("browser","chrome");
@@ -30,7 +29,6 @@ public class TestBase {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @AfterEach
     public void addAttachments() {
